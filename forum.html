@@ -4,8 +4,13 @@
     <meta property="og:title" content="Blank's forum">
     <meta property="og:description" content="Hey you! This is my forum...well nothing special but you can leave some message here :)">
     <meta property="og:image" content="https://wallpapercave.com/wp/wp2869695.png">
+    <script src="jquery.js"></script> 
+    <script> 
+    $(function(){
+      $("#comments").load("_includes/comments.html"); 
+    });
+    </script>
   </head>
   <body>
-     {% include comments.html %}
-    </body>
+    <div id="comments"></div>
 </html>
