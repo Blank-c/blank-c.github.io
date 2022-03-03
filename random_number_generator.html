@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><style>* {
+        padding: 0;
+        margin: 0;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        -webkit-tap-highlight-color: transparent ;
+      }
+      body {
+        height: 100vh;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #f0f1f4), color-stop(50%, #f5a623));
+        background: -o-linear-gradient(#f0f1f4 50%, #f5a623 50%);
+        background: linear-gradient(#f0f1f4 50%, #f5a623 50%);
+      }
+      .container {
+        background-color: #ffffff;
+        width: 95vw;
+        max-width: 34em;
+        position: absolute;
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        padding: 3em;
+        border-radius: 0.5em;
+        -webkit-box-shadow: 0 1.2em 2.8em rgba(0, 41, 22, 0.2);
+                box-shadow: 0 1.2em 2.8em rgba(0, 41, 22, 0.2);
+      }
+      .wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        gap: 3em;
+      }
+      label {
+        font-size: 1.2em;
+        font-weight: 600;
+        color: #242e4c;
+      }
+      input {
+        display: block;
+        width: 100%;
+        font-size: 1.3em;
+        border: none;
+        color: #444b5f;
+        border-bottom: 1.5px solid #242e4c;
+        padding: 0.45em;
+        margin-top: 0.45em;
+        outline: none;
+      }
+      input:focus {
+        border-color: #f5a623;
+      }
+      button#generate {
+        display: block;
+        width: 100%;
+        font-size: 1.1em;
+        margin: 2.7em 0 1.1em 0;
+        padding: 0.8em 0;
+        background-color: #f5a623;
+        color: #ffffff;
+        cursor: pointer;
+        border: none;
+        border-radius: 0.5em;
+      }
+      #result {
+        text-align: center;
+        font-size: 3.7em;
+        font-weight: 600;
+        color: #242e4c;
+      }</style><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Number Generator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="input-wrapper">
+          <label for="min">Min:</label>
+          <input type="number" id="min" value="0" />
+        </div>
+        <div class="input-wrapper">
+          <label for="max">Max:</label>
+          <input type="number" id="max" value="10" />
+        </div>
+      </div>
+      <button id="generate">Generate</button>
+      <div id="result"></div>
+    </div>
+    <script>
+      let generateBtn = document.getElementById("generate");
+      function randomNum() {
+        let min = document.getElementById("min");
+        let max = document.getElementById("max");
+        let minValue = Number(min.value);
+        let maxValue = Number(max.value);
+        if (minValue > maxValue) {
+          minValue = maxValue + minValue;
+          maxValue = minValue - maxValue;
+          minValue = minValue - maxValue;
+          min.value = minValue;
+          max.value = maxValue;
+        }
+        let num =
+          Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+        document.getElementById("result").innerText = num;
+      }
+      window.addEventListener("load", randomNum());
+      generateBtn.addEventListener("click", randomNum);
+    </script>
+  </body>
+</html>
